@@ -1,0 +1,12 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="osoba1" class="com.example.domain.Person">
+        <constructor-arg name="name" value="Marcin" />
+        <constructor-arg name="surname" value="Prokop" />
+        <constructor-arg name="email" value="marcin@example.com" />
+        <constructor-arg name="birthYear" value="1977" />
+    </bean>
+
+</beans>
