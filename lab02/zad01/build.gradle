@@ -20,7 +20,7 @@ test {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'ug.edu.bmajkowski.Main'
+        attributes 'Main-Class': 'ug.edu.jszulc.Main'
     }
 
 

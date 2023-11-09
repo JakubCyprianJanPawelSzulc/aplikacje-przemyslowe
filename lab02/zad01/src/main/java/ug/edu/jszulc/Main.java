@@ -1,4 +1,4 @@
-package ug.edu.bmajkowski;
+package ug.edu.jszulc;
 
 public class Main {
     public static void main(String[] args) {
