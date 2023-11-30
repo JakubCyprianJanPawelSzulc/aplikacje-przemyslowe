@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add plant</title>
+</head>
+<body>
+<h1>Add plant</h1>
+<form th:action="@{${#httpServletRequest.contextPath}/plants/add}" th:object="${plant}" method="post">
+    <label>name: <input type="text" th:field="*{name}" /></label><br>
+    <label>type: <input type="text" th:field="*{type}" /></label><br>
+    <label>color: <input type="text" th:field="*{color}" /></label><br>
+    <input type="submit" value="Add plant" />
+</form>
+</body>
+</html>
+
