@@ -1,5 +1,6 @@
 package com.example.garden.model;
 import java.util.UUID;
+import jakarta.validation.constraints.*;
 
 public class Plant {
     private UUID id;
@@ -43,6 +44,16 @@ public class Plant {
 
     public void setColor(String color){
         this.color = color;
+    }
+
+    @Override
+    public String toString(){
+        return "Plant{"+
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", name='" + type + '\'' +
+                ", color=" + color +
+                '}';
     }
 
 }

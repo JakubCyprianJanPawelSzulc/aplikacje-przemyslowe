@@ -5,11 +5,20 @@
 </head>
 <body>
 <h1>Add plant</h1>
-<form th:action="@{${#httpServletRequest.contextPath}/plants/add}" th:object="${plant}" method="post">
-    <label>name: <input type="text" th:field="*{name}" /></label><br>
-    <label>type: <input type="text" th:field="*{type}" /></label><br>
-    <label>color: <input type="text" th:field="*{color}" /></label><br>
-    <input type="submit" value="Add plant" />
+<form th:action="@{/plants/form}" th:object="${plant}" method="post">
+    <label for="name">Name: </label>
+    <input type="text" id="name" name="name" th:field="*{name}"/>
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+    <br/><br/>
+    <label for="type">Type: </label>
+    <input type="text" id="type" name="type" th:field="*{type}"/>
+    <span th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></span>
+    <br/><br/>
+    <label for="color">Color: </label>
+    <input type="text" id="color" name="color" th:field="*{color}"/>
+    <span th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></span>
+    <br/><br/>
+    <button type="submit">Add plant</button>
 </form>
 </body>
 </html>

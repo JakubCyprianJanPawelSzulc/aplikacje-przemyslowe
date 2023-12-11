@@ -1,5 +1,6 @@
 package com.example.garden;
 
+import com.example.garden.model.Plant;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,9 +17,9 @@ public class GardenApplication {
     @Bean
     public CommandLineRunner demo(GardenService gardenService) {
         return args -> {
-            gardenService.addPlant("Rose", "Flower", "Red");
-            gardenService.addPlant("Tulip", "Flower", "Yellow");
-            gardenService.addPlant("Thuja", "Tree", "Green");
+            gardenService.addPlant(new Plant("Rose", "Flower", "Red"));
+            gardenService.addPlant(new Plant("Tulip", "Flower", "Yellow"));
+            gardenService.addPlant(new Plant("Thuja", "Tree", "Green"));
         };
     }
 }

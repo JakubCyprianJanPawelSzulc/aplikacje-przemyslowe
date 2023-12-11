@@ -29,8 +29,10 @@ public class GardenService {
         return null;
     }
 
-    public void addPlant(String name, String type, String color) {
-        plants.add(new Plant(name, type, color));
+    public UUID addPlant(Plant plant) {
+        Plant newPlant = new Plant(plant.getName(), plant.getType(), plant.getColor());
+        plants.add(newPlant);
+        return newPlant.getId();
     }
 
     public void editPlant(UUID id, String newName, String newType, String newColor) {
@@ -44,7 +46,19 @@ public class GardenService {
         }
     }
 
-    public void deletePlant(UUID id) {
-        plants.removeIf(plant -> plant.getId().equals(id));
+    public boolean deletePlant(String id) {
+        UUID plantId = UUID.fromString(id);
+        Plant plantToDelete = null;
+        for (Plant plant : plants) {
+            if (plant.getId().equals(plantId)) {
+                plantToDelete = plant;
+                break;
+            }
+        }
+        if (plantToDelete != null) {
+            plants.remove(plantToDelete);
+            return true;
+        }
+        return false;
     }
 }

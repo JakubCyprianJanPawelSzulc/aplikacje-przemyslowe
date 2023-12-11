@@ -5,11 +5,23 @@
 </head>
 <body>
 <h1>Edit plant</h1>
-<form th:action="@{/plants/{id}}" th:object="${plant}" th:method="put" method="post">
-    <label>name: <input type="text" th:field="*{name}" /></label><br>
-    <label>type: <input type="text" th:field="*{type}" /></label><br>
-    <label>color: <input type="text" th:field="*{color}" /></label><br>
-    <input type="submit" value="Edit plant" />
+<form th:action="@{'/plants/' + ${plant.id} + '/edit'}" th:object="${plant}" method="post" >
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" th:field="*{name}">
+    <span th:if="${nameError}" th:text="${nameError}" class="error-message"></span>
+    <br/><br/>
+
+    <label for="type">Type:</label>
+    <input type="text" id="type" name="type" th:field="*{type}">
+    <span th:if="${typedError}" th:text="${typeError}" class="error-message"></span>
+    <br/><br/>
+
+    <label for="color">Color:</label>
+    <input type="text" id="color" name="color" th:field="*{color}">
+    <span th:if="${colorError}" th:text="${colorError}" class="error-message"></span>
+    <br/><br/>
+
+    <button type="submit">Save</button>
 </form>
 </body>
 </html>

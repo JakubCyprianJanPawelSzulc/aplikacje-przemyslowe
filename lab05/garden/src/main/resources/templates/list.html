@@ -6,15 +6,15 @@
 <body>
 <h1>plant list</h1>
 <ul>
-    <li th:each="plant : ${plants}">
+    <li th:each="plant : ${list}">
         <p th:text="${plant.name}"></p>
         <p th:text="${plant.type}"></p>
         <p th:text="${plant.color}"></p>
         <a th:href="@{/plants/{id}(id=${plant.id})}">Details</a>
         <a th:href="@{/plants/{id}/edit(id=${plant.id})}">Edit</a>
-        <a th:href="@{/plants/{id}(id=${plant.id})}" th:method="delete">Delete</a>
+        <a th:href="@{/plants/{id}/delete(id=${plant.id})}" th:method="delete">Delete</a>
     </li>
 </ul>
-<a th:href="@{/plants/add}">Add plant</a>
+<a th:href="@{/plants/form}">Add plant</a>
 </body>
 </html>
