@@ -1,43 +1,42 @@
 package com.example.garden.model;
+import java.util.List;
 import java.util.UUID;
+import jakarta.persistence.*;
 
+@Entity
 public class Gardener {
-    private UUID id;
+    private long id;
     private String name;
 
-    private Plant favoritePlant;
+    private List<Garden> gardens;
 
     public Gardener() {
-        this.id = UUID.randomUUID();
     }
 
-    public Gardener(String name) {
-        this();
-        this.name = name;
-    }
-
-    public UUID getId() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
-    public Plant getFavoritePlant() {
-        return favoritePlant;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setFavoritePlant(Plant favoritePlant) {
-        this.favoritePlant = favoritePlant;
+    @ManyToMany(mappedBy = "gardeners")
+    public List<Garden> getGardens() {
+        return gardens;
     }
 
-    @Override
-    public String toString() {
-        return "Gardener{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", favoritePlant=" + (favoritePlant != null ? favoritePlant.getName() : "none") +
-                '}';
+    public void setGardens(List<Garden> gardens) {
+        this.gardens = gardens;
     }
 }

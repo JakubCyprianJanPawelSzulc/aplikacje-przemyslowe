@@ -3,8 +3,9 @@ import java.util.UUID;
 //import jakarta.validation.constraints.*;
 import jakarta.persistence.*;
 
+@Entity
 public class Plant {
-    private UUID id;
+    private long id;
     private String name;
     private String type;
 
@@ -12,40 +13,44 @@ public class Plant {
 
     private Fertilizer fertilizer;
 
-    public Plant() {}
+    private Pot pot;
 
-    public Plant(String name, String type, String color) {
-        this.id = UUID.randomUUID();
-        this.name = name;
-        this.type = type;
-        this.color = color;
+    private Garden garden;
+
+    public Plant() {
     }
 
-    public UUID getId() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public String getColor(){
-        return color;
-    }
-
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getType() {
+        return type;
     }
 
     public void setType(String type) {
         this.type = type;
     }
 
-    public void setColor(String color){
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
         this.color = color;
     }
 
@@ -58,14 +63,21 @@ public class Plant {
         this.fertilizer = fertilizer;
     }
 
-    @Override
-    public String toString(){
-        return "Plant{"+
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", name='" + type + '\'' +
-                ", color=" + color +
-                '}';
+    @ManyToOne
+    public Pot getPot() {
+        return pot;
     }
 
+    public void setPot(Pot pot) {
+        this.pot = pot;
+    }
+
+    @ManyToOne
+    public Garden getGarden() {
+        return garden;
+    }
+
+    public void setGarden(Garden garden) {
+        this.garden = garden;
+    }
 }
