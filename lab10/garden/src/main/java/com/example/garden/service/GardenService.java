@@ -61,8 +61,8 @@ public class GardenService {
         });
 
         Garden garden2 = new Garden("Mamczyn");
-        garden1.setStreet("Ketlinga");
-        garden1.setNumber(6);
+        garden2.setStreet("Ketlinga");
+        garden2.setNumber(6);
         gardenRepository.save(garden2);
 
         gardenRepository.findByStreet("Ketlinga");

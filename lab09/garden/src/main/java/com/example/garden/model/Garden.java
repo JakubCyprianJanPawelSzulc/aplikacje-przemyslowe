@@ -10,11 +10,15 @@ public class Garden {
     private String name;
     private String street;
     private int number;
-//    private List<Plant> plants;
+    private List<Plant> plants;
 //
 //    private List<Gardener> gardeners;
 
     public Garden() {
+    }
+
+    public Garden(String name){
+        this.name = name;
     }
 
     @Id
@@ -86,7 +90,7 @@ public class Garden {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", street='" + street + '\'' +
-                ", number=" + number
+                ", number=" + number +
                 '}';
     }
 }

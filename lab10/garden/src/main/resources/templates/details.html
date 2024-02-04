@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>plant details</title>
+</head>
+<body>
+<h1>plant details</h1>
+<ul>
+    <li th:object="${plant}">
+        <p th:text="${plant.name}"></p>
+        <p th:text="${plant.type}"></p>
+        <p th:text="${plant.color}"></p>
+    </li>
+</ul>
+</body>
+</html>
