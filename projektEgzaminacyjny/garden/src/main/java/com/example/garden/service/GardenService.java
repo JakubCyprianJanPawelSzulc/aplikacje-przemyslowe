@@ -6,10 +6,9 @@ import com.example.garden.model.Plant;
 import com.example.garden.model.Garden;
 import com.example.garden.repository.PlantRepository;
 import com.example.garden.repository.GardenRepository;
+import com.example.garden.repository.GardenerRepository;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import java.util.Optional;
 
 @Service
@@ -19,9 +18,12 @@ public class GardenService {
     final PlantRepository plantRepository;
     final GardenRepository gardenRepository;
 
-    public GardenService(PlantRepository plantRepository, GardenRepository gardenRepository) {
+    final GardenerRepository gardenerRepository;
+
+    public GardenService(PlantRepository plantRepository, GardenRepository gardenRepository, GardenerRepository gardenerRepository) {
         this.plantRepository = plantRepository;
         this.gardenRepository = gardenRepository;
+        this.gardenerRepository = gardenerRepository;
     }
 
     public List<Garden> getAllGardens() {
@@ -64,6 +66,8 @@ public class GardenService {
         Garden garden = gardenRepository.findById(gardenId).orElseThrow(() -> new RuntimeException("No garden with id " + gardenId));
         plant.setGarden(null);
         plantRepository.save(plant);
+        garden.getPlants().remove(plant);
+        gardenRepository.save(garden);
     }
 
     public List<Garden> findByName(String name) {

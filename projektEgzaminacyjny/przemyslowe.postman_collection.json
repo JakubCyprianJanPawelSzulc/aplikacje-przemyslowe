@@ -365,19 +365,57 @@
 						}
 					},
 					"response": []
-				}
-			]
-		},
-		{
-			"name": "ogrodnicy",
-			"item": [
+				},
 				{
-					"name": "usuwanie ogrodnikow",
+					"name": "wyswietlanie ogrodow z ogrodnikami",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/gardens/gardeners/notempty",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"gardens",
+								"gardeners",
+								"notempty"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usuwanie relacji ogrod roslina",
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/gardeners/1",
+							"raw": "localhost:8080/api/gardens/1/plants/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"gardens",
+								"1",
+								"plants",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usuwanie relacji ogrod ogrodnik",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/gardeners/1/gardens/1",
 							"host": [
 								"localhost"
 							],
@@ -385,12 +423,19 @@
 							"path": [
 								"api",
 								"gardeners",
+								"1",
+								"gardens",
 								"1"
 							]
 						}
 					},
 					"response": []
-				},
+				}
+			]
+		},
+		{
+			"name": "ogrodnicy",
+			"item": [
 				{
 					"name": "dodawanie ogrodnikow",
 					"request": {
@@ -420,6 +465,26 @@
 					"response": []
 				},
 				{
+					"name": "usuwanie ogrodnikow",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/gardeners/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"gardeners",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "wyswietlanie wszystkich ogrodnikow",
 					"request": {
 						"method": "GET",
@@ -439,7 +504,7 @@
 					"response": []
 				},
 				{
-					"name": "wyswietlanie ogrodnikoa po id",
+					"name": "wyswietlanie ogrodnika po id",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -482,6 +547,27 @@
 								"api",
 								"gardeners",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "wyswietlanie ogrodow dla imion ogrodnikow",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/gardeners/Andrzej/gardens",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"gardeners",
+								"Andrzej",
+								"gardens"
 							]
 						}
 					},
@@ -604,6 +690,28 @@
 							"path": [
 								"api",
 								"fertilizers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usuwanie relacji roslina nawoz",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/fertilizers/1/plants/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"fertilizers",
+								"1",
+								"plants",
 								"1"
 							]
 						}

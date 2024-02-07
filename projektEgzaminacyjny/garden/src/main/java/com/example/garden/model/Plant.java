@@ -16,12 +16,12 @@ public class Plant {
     private String type;
     private String color;
 
-    @OneToOne(mappedBy = "plant", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private Fertilizer fertilizer;
 
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Garden garden;
 
 }

@@ -40,16 +40,16 @@ public class FertilizerService {
         fertilizerRepository.deleteById(id);
     }
 
-    public Iterable<Plant> getPlantsByFertilizerName(String fertilizerName) {
-        return plantRepository.findByFertilizerName(fertilizerName);
-    }
-
     public void setFertilizerToPlant(Long plantId, Long fertilizerId) {
         Plant plant = plantRepository.findById(plantId).orElseThrow(() -> new RuntimeException("No plant with id " + plantId));
         Fertilizer fertilizer = fertilizerRepository.findById(fertilizerId).orElseThrow(() -> new RuntimeException("No fertilizer with id " + fertilizerId));
         plant.setFertilizer(fertilizer);
         plantRepository.save(plant);
-        fertilizer.setPlant(plant);
-        fertilizerRepository.save(fertilizer);
+    }
+
+    public void removeFertilizerFromPlant(Long plantId) {
+        Plant plant = plantRepository.findById(plantId).orElseThrow(() -> new RuntimeException("No plant with id " + plantId));
+        plant.setFertilizer(null);
+        plantRepository.save(plant);
     }
 }

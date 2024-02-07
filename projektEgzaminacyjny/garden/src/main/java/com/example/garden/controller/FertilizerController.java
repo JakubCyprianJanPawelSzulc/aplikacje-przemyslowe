@@ -42,7 +42,11 @@ public class FertilizerController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-
+    @DeleteMapping("/{fertilizerId}/plants/{plantId}")
+    public ResponseEntity<Void> removeFertilizerFromPlant(@PathVariable Long plantId) {
+        fertilizerService.removeFertilizerFromPlant(plantId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<Fertilizer> updateFertilizer(@PathVariable Long id, @RequestBody Fertilizer updatedFertilizer) {

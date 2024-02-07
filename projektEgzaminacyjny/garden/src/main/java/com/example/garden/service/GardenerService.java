@@ -54,4 +54,15 @@ public class GardenerService {
         gardenerRepository.save(gardener);
         gardenRepository.save(garden);
     }
+
+    public void removeGardenerFromGarden(Long gardenerId, Long gardenId) {
+        Gardener gardener = gardenerRepository.findById(gardenerId).orElseThrow(() -> new RuntimeException("No gardener with id " + gardenerId));
+        Garden garden = gardenRepository.findById(gardenId).orElseThrow(() -> new RuntimeException("No garden with id " + gardenId));
+
+        gardener.getGardens().remove(garden);
+        garden.getGardeners().remove(gardener);
+
+        gardenerRepository.save(gardener);
+        gardenRepository.save(garden);
+    }
 }

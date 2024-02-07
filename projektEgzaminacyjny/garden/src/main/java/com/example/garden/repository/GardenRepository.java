@@ -12,11 +12,9 @@ import java.util.List;
 public interface GardenRepository extends JpaRepository<Garden, Long> {
 
 
-    // Query: Świat obiektów JPQL
     @Query("Select g from Garden g")
     List<Garden> getAllGardens();
 
-    // Query: Świat obiektów JPQL
     @Query("Select g from Garden g where g.street=?1 and g.number=?2")
     List<Garden> getByStreetAndNumber(String street, int number);
 

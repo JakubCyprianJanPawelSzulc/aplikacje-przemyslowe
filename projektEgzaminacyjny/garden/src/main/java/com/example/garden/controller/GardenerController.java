@@ -1,5 +1,6 @@
 package com.example.garden.controller;
 
+import com.example.garden.model.Garden;
 import com.example.garden.model.Gardener;
 import com.example.garden.repository.GardenerRepository;
 import com.example.garden.service.GardenerService;
@@ -53,11 +54,22 @@ public class GardenerController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @DeleteMapping("/{gardenerId}/gardens/{gardenId}")
+    public ResponseEntity<Void> removeGardenerFromGarden(@PathVariable Long gardenerId, @PathVariable Long gardenId) {
+        gardenerService.removeGardenerFromGarden(gardenerId, gardenId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteGardener(@PathVariable Long id) {
         gardenerService.deleteGardener(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/{gardenerName}/gardens")
+    public ResponseEntity<List<Garden>> getGardensByGardenerName(@PathVariable String gardenerName) {
+        List<Garden> gardens = gardenerService.getGardensByGardenerName(gardenerName);
+        return new ResponseEntity<>(gardens, HttpStatus.OK);
     }
 
 

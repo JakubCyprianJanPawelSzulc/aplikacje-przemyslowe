@@ -1,7 +1,5 @@
 package com.example.garden.model;
-import java.util.UUID;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,9 +15,5 @@ public class Fertilizer {
 
     private String name;
     private String type;
-
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @JsonIgnore
-    private Plant plant;
 
 }
